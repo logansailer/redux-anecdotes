@@ -29,18 +29,14 @@ const anecdoteSlice = createSlice({
       const content = action.payload;
       state.push({
         content,
-        id: getId,
+        id: getId(),
         votes: 0,
       });
     },
     vote(state, action) {
-      const id = action.payload.id;
-      const toChange = state.find((n) => n.id === id);
-      const changedAnecdote = {
-        ...toChange,
-        votes: (toChange.votes += 1),
-      };
-      return state.map((note) => (note.id !== id ? note : changedAnecdote));
+      const id = action.payload;
+      const toChange = state.findIndex((n) => n.id === id);
+      state[toChange].votes += 1;
     },
   },
 });
