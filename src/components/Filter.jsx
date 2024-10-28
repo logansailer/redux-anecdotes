@@ -5,7 +5,7 @@ const Filter = () => {
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
-    //event.taget.value is the value of the searchbar
+    //event.target.value is the value of the searchbar
     dispatch(findFilter(event.target.value));
   };
 
